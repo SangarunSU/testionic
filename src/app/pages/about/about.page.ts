@@ -13,21 +13,21 @@ export class AboutPage implements OnInit {
     this.productlist = [
       {
         id: 1,
-        productname: "Grilled Chicken",
-        price: "300",
-        icon: "https://img.icons8.com/external-icongeek26-flat-icongeek26/48/external-chicken-meat-icongeek26-flat-icongeek26-1.png"
+        productname: "Perfume",
+        price: "1055",
+        icon: "https://img.icons8.com/color/48/perfume-bottle.png"
       },
       {
         id: 2,
-        productname: "Grilled Pork",
-        price: "125",
-        icon: "https://img.icons8.com/fluency/48/steak-rare.png"
+        productname: "Shampoo",
+        price: "355",
+        icon: "https://img.icons8.com/color/48/shampoo.png"
       },
       {
         id: 3,
-        productname: "Cake",
-        price: "80",
-        icon: "https://img.icons8.com/plasticine/52/minecraft-grass-cube--v2.png"
+        productname: "Nail Polish",
+        price: "125",
+        icon: "https://img.icons8.com/color/48/nail-polish.png"
       }
     ];
 

@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyBaPFcizMTWljpv7dUURNTz0odig-5-luU",
-    authDomain: "ionic-test-001.firebaseapp.com",
-    projectId: "ionic-test-001",
-    storageBucket: "ionic-test-001.appspot.com",
-    messagingSenderId: "203896846138",
-    appId: "1:203896846138:web:371392727361787e224203",
-    measurementId: "G-31DK6LX1SG"
+    apiKey: "AIzaSyBub9pMhoc2mifvg7d3cZkUgvU3EJ2vsjM",
+    authDomain: "storius-vcsm.firebaseapp.com",
+    databaseURL: "https://storius-vcsm-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "storius-vcsm",
+    storageBucket: "storius-vcsm.appspot.com",
+    messagingSenderId: "541516081390",
+    appId: "1:541516081390:web:bcf64071e99c66a0756bff",
+    measurementId: "G-K1F0G5J8PW"
   }
 };
 

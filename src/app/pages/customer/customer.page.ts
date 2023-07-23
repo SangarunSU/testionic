@@ -16,63 +16,138 @@ export class CustomerPage implements OnInit {
   constructor(private dataService: CrudService,
     private modalCtrl: ModalController,
     private cd: ChangeDetectorRef,
-    public alertCtrl: AlertController) {
+    public alertController: AlertController) {
     this.dataService.loadAllData().subscribe(res => {
       this.datalist = res;
       this.cd.detectChanges();
-    });
-  }
+    })
+}
 
   ngOnInit() {
   }
 
-  async showedit(item: any) {
-    let alert = this.alertCtrl.create({
-      header: 'Edit',
-      subHeader: 'Fill the form',
+async  AddData(){
+    let alert = this.alertController.create({
+      header: "ADD",
       inputs: [
-        {
-          name: 'inpname',
-          placeholder: 'product name',
-          value: item.productname
-        },
-        {
-          name: 'inprice',
-          placeholder: 'price',
-          value: item.price
+      {
+        name: "FullName",
+        placeholder: "FullName",
+      },
+      {
+        name: "Price",
+        placeholder: "Price",
+      },
+      {
+        name: "TellNo",
+        placeholder: "TellNo",
+      },
+      {
+        name: "ispostpaid",
+        placeholder: "ispostpaid",
+        type: "checkbox"
+      }
+    ],
+      buttons: [
+      {
+        text: "Cancel",
+        role: "cancel",
+      },
+      {
+        text: "Add",
+        handler: data => {
+          const customerData:CustomerData = {
+            fullname: data.FullName,
+            price: data.Price,
+            telno: data.TellNo,
+            ispostpaid: data.ispostpaid
+          }
+
+          this.dataService.createData(customerData);
         }
-      ],
+      }
+    ]
+    });
+
+    (await alert).present();
+    
+  }
+
+  async DeleteData(customer: CustomerData){
+    const alert = this.alertController.create({
+      header: "Delete",
+      message: "Finish",
+
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
+          text: "Cancel",
+          role: "cancel",         
         },
-        {
-          text: 'Update',
-          handler: (data) => {
-            const CustomerData : CustomerData = {
-              fullname: data.inpname,
-              ispostpaid: data.inpispostpaid,
-              price: data.inprice,
-              telno: data.intelno
-            }
-            this.dataService.createData(CustomerData);
-              }
-            }
 
-          }//hadler
+        {
+          text: "OK",
+          handler: () => {
+            this.dataService.deleteData(customer)
+            this.cd.detectChanges();
+          }
+          
         }
       ]
+    });
+
+    (await alert).present();
+  }
+
+  async EditData(customerEditData: CustomerData){
+    const alert = this.alertController.create({
+      header: "EDIT",
+      inputs: [
+      {
+        name: "FullName",
+        placeholder: "FullName",
+      },
+      {
+        name: "Price",
+        placeholder: "Price",
+      },
+      {
+        name: "TellNo",
+        placeholder: "TellNo",
+      },
+      {
+        name: "ispostpaid",
+        placeholder: "ispostpaid",
+        type: "checkbox"
+      }
+    ],
+
+    buttons: [
+      {
+        text: "Cancel",
+        role: "cancel",
+      },
+      {
+        text: "Edit",
+        handler: data => {
+          const customerEdit:CustomerData = {
+            id: customerEditData.id,
+            fullname: data.FullName,
+            price: data.Price,
+            telno: data.TellNo,
+            ispostpaid: data.ispostpaid
+          }
+
+          this.dataService.editData(customerEdit);
+        }
+      }
+    ]
     });
     (await alert).present();
   }
 
 
 
-
-
-
+ 
 }
+
+

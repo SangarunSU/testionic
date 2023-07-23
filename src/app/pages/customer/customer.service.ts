@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, Firestore } from
+import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, updateDoc } from
     '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 
@@ -33,9 +33,25 @@ export class CrudService {
             fullname: tmpObj.fullname,
             price: tmpObj.price,
             telno: tmpObj.telno,
-    
             ispostpaid: tmpObj.ispostpaid   
       }); 
     }//func
+
+    editData(tmpObj: CustomerData) {
+        const notesRef = doc(this.firestore, 'StudentCollection/'+tmpObj.id);
+
+        return updateDoc(notesRef,{
+            fullname: tmpObj.fullname,
+            price: tmpObj.price,
+            telno: tmpObj.telno,
+            ispostpaid: tmpObj.ispostpaid            
+        })
+    }
+
+    deleteData(tmpObj: CustomerData) {
+        const notesRef = doc(this.firestore, 'StudentCollection/'+tmpObj.id);
+
+        return deleteDoc(notesRef);
+    }
     
 }

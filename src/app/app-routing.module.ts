@@ -25,6 +25,10 @@ const routes: Routes = [
   },  {
     path: 'customer',
     loadChildren: () => import('./pages/customer/customer.module').then( m => m.CustomerPageModule)
+  },
+  {
+    path: 'loginauth',
+    loadChildren: () => import('./pages/loginauth/loginauth.module').then( m => m.LoginauthPageModule)
   }
 
 
